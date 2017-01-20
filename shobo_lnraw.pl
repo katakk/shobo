@@ -9,7 +9,7 @@ use Sys::Syslog qw(:DEFAULT setlogsock);
 use Storable qw/lock_nstore lock_retrieve/;
 use File::Find;
 use File::Path;
-use Encode 'encode';
+use Encode qw/encode decode/;
 use LWP::Simple qw/get/;
 use XML::Simple; #sudo yum install  expat-devel perl-XML-Simple
 use Data::Dumper;
@@ -266,7 +266,7 @@ sub d{
 	$FirstMonth    = '0' if (ref($FirstMonth) eq "HASH");
 	$FirstEndYear  = '' if (ref($FirstEndYear) eq "HASH");
 	$FirstEndMonth = '0' if (ref($FirstEndMonth) eq "HASH");
-	my $title = $tid->{$number}->{title};
+	my $title = decode('utf-8', $tid->{$number}->{title});
 	my $filename = sprintf "%s %s", $title, $_;
 	my $src = $File::Find::name;
 	if($nomakedir)
