@@ -16,6 +16,13 @@ cron で定間隔で回すとsamba みやすくなる
 
 ~~アクセスしまくらないように dbはローカルに保持するんだけど、ときどき壊れる。~~
 
+## fstab
+
+    tmpfs                   /raw                    tmpfs   defaults        0 0
+    tmpfs                   /record                 tmpfs   defaults        0 0
+    tmpfs                   /record2                 tmpfs   defaults        0 0
+    tmpfs                   /anime                  tmpfs   defaults        0 0
+    tmpfs                   /mp4                    tmpfs   defaults        0 0
     
 ## samba
 
@@ -33,7 +40,7 @@ cron で定間隔で回すとsamba みやすくなる
     
     [anime]
     path = /anime
-
+    
 ## df
 
     Filesystem      Size  Used Avail Use% Mounted on
