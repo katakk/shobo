@@ -8,7 +8,7 @@ cron で定間隔で回すとsamba みやすくなる
 
 みたいな感じであくせすできるようになる
   
- * https://github.com/katakk/tid が ポスグレ対応したポン *
+ *https://github.com/katakk/tid が ポスグレ対応したポン*
  
  しょぼカルから採取したデーターはポスグレに飛ばすように変更
  
