@@ -183,12 +183,12 @@ sub tid_to_name
 	$tid->{$number}->{title} = encode('utf-8', $tid->{$number}->{title});
 	$tid->{$number}->{TitleYomi} = encode('utf-8', $tid->{$number}->{TitleYomi});
 	$sth = $dbh->prepare($DBInsert1);
- 	$sth->execute($number,
+ 	eval { $sth->execute($number,
 			$tid->{$number}->{title},
 			$tid->{$number}->{cat},
 			$tid->{$number}->{UserPoint},
 			$tid->{$number}->{UserPointRank},
-		);
+		);};
 	$sth->finish;
 
 	$sth = $dbh->prepare($DBInsert2);
@@ -268,6 +268,7 @@ sub d{
 	$FirstEndMonth = '0' if (ref($FirstEndMonth) eq "HASH");
 	my $title = decode('utf-8', $tid->{$number}->{title});
 	my $filename = sprintf "%s #%s %s-%s %sch.%s", $title, $no, $day, $time, $ch, $ext;
+#print $filename . "\n";
 	my $src = $File::Find::name;
 	if($nomakedir)
 	{
