@@ -8,11 +8,21 @@ cron で定間隔で回すとsamba みやすくなる
 
 みたいな感じであくせすできるようになる
   
+ *https://github.com/katakk/tid が ポスグレ対応したポン*
+ 
+ しょぼカルから採取したデーターはポスグレに飛ばすように変更
+ 
 *getxml2db.pl* でポスグレにアニメタイトルは渡してるんだけど、カテゴリは渡していないみたいで、とりあえずlibwww-perl でしょぼカルdbに取りに行ってる。
 
-アクセスしまくらないように dbはローカルに保持するんだけど、ときどき壊れる。
+~~アクセスしまくらないように dbはローカルに保持するんだけど、ときどき壊れる。~~
 
-*getxml2db.pl* でカテゴリとか捕れるんなら、katakk/tid/tid_foltia 使えばよいのだけど。
+## fstab
+
+    tmpfs                   /raw                    tmpfs   defaults        0 0
+    tmpfs                   /record                 tmpfs   defaults        0 0
+    tmpfs                   /record2                 tmpfs   defaults        0 0
+    tmpfs                   /anime                  tmpfs   defaults        0 0
+    tmpfs                   /mp4                    tmpfs   defaults        0 0
     
 ## samba
 
@@ -30,7 +40,7 @@ cron で定間隔で回すとsamba みやすくなる
     
     [anime]
     path = /anime
-
+    
 ## df
 
     Filesystem      Size  Used Avail Use% Mounted on
