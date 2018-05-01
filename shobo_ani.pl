@@ -51,6 +51,13 @@ INSERT INTO
     , userpointRank) VALUES (?,?,?,?,?)
 SQL
 
+  my $DBDelete1 =  <<"SQL";
+DELETE FROM
+  syobocal_program
+WHERE
+  tid = ?
+SQL
+
   my $DBInsert2 =  <<"SQL";
 UPDATE syobocal_program 
 SET
@@ -189,6 +196,10 @@ sub tid_to_name
 			$tid->{$number}->{UserPoint},
 			$tid->{$number}->{UserPointRank},
 		);};
+	if ($@) {
+		$sth = $dbh->prepare($DBDelete1);
+		eval { $sth->execute($number);};
+	}
 	$sth->finish;
 
 	$sth = $dbh->prepare($DBInsert2);
